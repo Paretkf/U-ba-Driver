@@ -1,18 +1,22 @@
 <template>
-  <div class="hello">
+  <div class="calling">
     <section class="hero is-fullheight"  style="background-color : #666666">
       <div class="hero">
       <br>
        <div class="container">
-         <div class="columns is-centered">
-           <div class="column is-6 box">
+          <div class="columns is-centered">
+            <div class="column is-6 box">
+              <div class="columns">
+                <img src="http://www.travelanium.com/parindahotel/images/thumb-map-gg.jpg" alt="" width="100%">
+              </div>
              <div class="columns">
-               <img src="https://f.ptcdn.info/072/031/000/1430903433-F8MONSTER2-o.jpg" alt="" width="">
-             </div>
-             <div class="column is-4">
-               <button>OK</button>
-               <button>cancle</button>
-             </div>
+                <div class="column is-half is-offset-one-quarter" >
+                  <center>
+                    <button type="button" name="button" class="button is-large is-danger">ยอมรับ</button>
+                    <button type="button" name="button" class="button is-large is-danger">ไม่ยอมรับ</button>
+                  </center>
+                </div>
+              </div>
            </div>
          </div>
        </div>
@@ -23,7 +27,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'calling',
   data () {
     return {
       msg: 'Header'
