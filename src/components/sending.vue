@@ -19,7 +19,7 @@
                   <label class="title is-4">ชื่อลูกค้า </label>
                 </div>
                 <div class="column is-4">
-                  <span class="tag is-success is-large"><label class="title is-3">99 ฿</label></span><br>
+                  <span class="tag is-danger is-large">99 ฿</span><br>
                   <label class="title is-4">12:59 นาที</label><br>
                   <label class="title is-4">แทยอน</label>
                 </div>
@@ -27,7 +27,7 @@
               <div class="columns">
                 <div class="column is-half is-offset-one-quarter" >
                   <center>
-                    <button type="button" name="button" class="button is-large is-danger">Arrive ( summary )</button>
+                    <router-link to="/summary"><button type="button" name="button" class="button is-large is-success">Arrive</button></router-link>
                   </center>
                 </div>
               </div>
