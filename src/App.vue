@@ -1,16 +1,29 @@
 <template>
   <div>
-    <header-view/>
+    <aaa/>
     <router-view/>
   </div>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import headerView from './components/header'
+
 export default {
   name: 'app',
   components: {
-    headerView
+    aaa: headerView
+  },
+  computed: {
+    ...mapGetters([])
+  },
+  methods: {
+    ...mapActions([
+      'init'
+    ])
+  },
+  mounted () {
+    this.init()
   }
 }
 </script>
