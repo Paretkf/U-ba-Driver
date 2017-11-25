@@ -7,13 +7,20 @@
           <div class="columns is-centered">
             <div class="column is-6 box">
               <div class="columns">
-                <img src="http://www.travelanium.com/parindahotel/images/thumb-map-gg.jpg" alt="" width="100%">
+                <gmap-map :center="center" :zoom="7" style="width: 500px; height: 300px">
+                  <gmap-marker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true" @click="center=m.position">
+                  </gmap-marker>
+                </gmap-map>
               </div>
              <div class="columns">
                 <div class="column is-half is-offset-one-quarter" >
                   <center>
-                    <button type="button" name="button" class="button is-large is-danger">ยอมรับ</button>
-                    <button type="button" name="button" class="button is-large is-danger">ไม่ยอมรับ</button>
+                    <router-link to="/sending">
+                      <button type="button" name="button" class="button is-large is-success">ยอมรับ</button>
+                    </router-link>
+                    <router-link to="/">
+                      <button type="button" name="button" class="button is-large is-danger">ไม่ยอมรับ</button>
+                    </router-link>
                   </center>
                 </div>
               </div>
@@ -26,12 +33,25 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import * as VueGoogleMaps from 'vue2-google-maps'
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyAdTt1CEiELNaqxvQl7sgeHnpy9VskiosY'
+  }
+})
 export default {
   name: 'calling',
   data () {
     return {
-      msg: 'Header'
+      msg: 'Header',
+      center: {lat: 13.754, lng: 100.5014},
+      markers: [{
+        position: {lat: 13.754, lng: 100.5014}
+      }]
     }
+  },
+  computed: {
   }
 }
 </script>

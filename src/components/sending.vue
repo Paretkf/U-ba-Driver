@@ -19,15 +19,17 @@
                   <label class="title is-4">ชื่อลูกค้า </label>
                 </div>
                 <div class="column is-4">
-                  <span class="tag is-danger is-large">99 ฿</span><br>
-                  <label class="title is-4">12:59 นาที</label><br>
+                  <span class="tag is-danger is-large">{{calCost}} ฿</span><br>
+                  <label class="title is-4">
+                    {{data.Sec}} วินาที
+                  </label><br>
                   <label class="title is-4">แทยอน</label>
                 </div>
               </div>
               <div class="columns">
                 <div class="column is-half is-offset-one-quarter" >
                   <center>
-                    <router-link to="/summary"><button type="button" name="button" class="button is-large is-success">Arrive</button></router-link>
+                    <router-link to="/summary"><button type="button" name="button" class="button is-large is-success" @click="setTime(data)">Arrive</button></router-link>
                   </center>
                 </div>
               </div>
@@ -40,12 +42,33 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 export default {
   name: 'sending',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Welcome to Your Vue.js App',
+      data: {
+        Sec: 0,
+        cost: 0
+      }
     }
+  },
+  computed: {
+    calCost () {
+      this.data.cost = this.data.Sec * 2
+      return this.data.cost
+    }
+  },
+  methods: {
+    ...mapActions([
+      'bindtimerRef',
+      'unbindtimerRef',
+      'setTime'
+    ])
+  },
+  mounted () {
+    setInterval(() => { this.data.Sec++ }, 1000)
   }
 }
 </script>
