@@ -1,6 +1,8 @@
 import firebaseConfig from '../../firebase.config.js'
 import firebase from 'firebase'
-// import router from '../router'
+import router from '../router'
+
+// Your firebase config
 let config = firebaseConfig
 
 firebase.initializeApp(config)
@@ -8,12 +10,7 @@ firebase.initializeApp(config)
 export default {
   state: {
     isReady: false,
-    user: {
-      displayName: '',
-      fb: {
-        photoURL: ''
-      }
-    }
+    user: {}
   },
   getters: {
     user: state => state.user,
@@ -38,12 +35,12 @@ export default {
             uid,
             fb: user.providerData[0]
           }
-          console.log(profile)
           commit('setUser', profile)
           // router.push('/')
         } else {
           commit('setUser', null)
-          commit('setReady') // เอาไว้เรียก mutations
+          router.push('/')
+          commit('setReady')
         }
       })
     },

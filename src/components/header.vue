@@ -10,16 +10,14 @@
 
       <div class="navbar-end">
         <div class="navbar-item">
+          
           <div v-if="!isReady">
             <img :src="user.fb.photoURL" alt="">
             {{user.displayName}}
           </div>
-          <div v-if="isLogin">
-            Loading...
-          </div>
           <div v-if="!isReady">
             <router-link to="/">
-              <button type="button" class="button is-danger" name="button" @click="logout()">Log out</button>
+              <button type="button" class="button is-danger" name="button" @click="discon()">Log out</button>
             </router-link>
           </div>
         </div>
@@ -39,8 +37,13 @@ export default {
   },
   methods: {
     ...mapActions([
-      'logout'
-    ])
+      'logout',
+      'binddriverRef',
+      'unbinddriverRef'
+    ]),
+    discon () {
+      this.logout()
+    }
   }
 }
 </script>

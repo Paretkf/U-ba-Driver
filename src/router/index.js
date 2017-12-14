@@ -6,6 +6,7 @@ import calling from '@/components/calling'
 import summary from '@/components/summary'
 import sending from '@/components/sending'
 import driving from '@/components/driving'
+import start from '@/components/start'
 
 Vue.use(Router)
 
@@ -20,6 +21,11 @@ export default new Router({
       path: '/driving',
       name: 'driving',
       component: driving
+    },
+    {
+      path: '/start',
+      name: 'start',
+      component: start
     },
     {
       path: '/',

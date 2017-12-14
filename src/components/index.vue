@@ -3,7 +3,10 @@
   <section class="hero is-info is-fullheight">
   <div class="hero-body" style="background-color : #666666">
     <div class="container">
+      {{caller}}
       <h1 class="title">
+        <button @click="setCaller()">caller</button>
+        
         <center><img src="https://media.giphy.com/media/l2QDVwaaqvZGr834c/giphy.gif" alt="" width="25%"></center>
         <center>Hello UBA Driver</center>
       </h1>
@@ -14,11 +17,29 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'lat',
+      'long',
+      'caller'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'bindcallRef',
+      'unbindcallRef',
+      'setCaller'
+    ]),
+    discon () {
+      this.logout()
     }
   }
 }

@@ -7,9 +7,7 @@
          <br><br><br>
           <div class="columns is-centered">
             <div class="column is-4 box">
-              <router-link to="index">
-               <button class="button is-large is-success" style="width : 100%; height :100%" @click="login">login </button>
-              </router-link>
+              <button class="button is-large is-success" style="width : 100%; height :100%" @click="newDri">login </button>
             </div>
          </div>
        </div>
@@ -19,18 +17,27 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex'
+import { mapActions } from 'vuex'
 export default {
   computed: {
-    ...mapGetters([
-      'user',
-      'isReady'
-    ])
   },
   methods: {
     ...mapActions([
-      'login'
-    ])
+      'login',
+      'newDriver',
+      'binddriverRef',
+      'unbinddriverRef'
+    ]),
+    async newDri () {
+      this.$store.dispatch('login')
+      this.$router.push({path: '/start'})
+    }
+  },
+  created () {
+    this.binddriverRef()
+  },
+  destroyed () {
+    this.unbinddriverRef()
   }
 }
 </script>
