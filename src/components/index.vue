@@ -3,7 +3,7 @@
   <section class="hero is-info is-fullheight">
   <div class="hero-body" style="background-color : #666666">
     <div class="container">
-      {{caller}}
+      {{caller.name}}
       <h1 class="title">
         <button @click="setCaller()">caller</button>
         

@@ -1,6 +1,6 @@
 import { firebaseMutations, firebaseAction } from 'vuexfire'
 import firebase from 'firebase'
-
+import axios from 'axios'
 let db = firebase.database()
 let driverRef = db.ref('driver')
 let callRef = db.ref('call')
@@ -34,8 +34,22 @@ export default {
       console.log(state.long)
     },
     setCaller (state) {
-      callRef.once('child_added', snapshot => {
-        state.caller = snapshot
+      // callRef.once('child_added', snapshot => {
+      //   state.caller = snapshot
+      // })
+      axios.get('https://u-ba-d180c.firebaseio.com/call.json').then((res) => {
+        // state.user = res.data
+        let arr = []
+        for (var index in res.data) {
+          if (res.data.hasOwnProperty(index)) {
+            arr.push({
+              ...res.data[index],
+              firebaseID: index
+            })
+          }
+        }
+        state.caller = arr[0]
+        console.log('start ', state.caller)
       })
     }
   },
