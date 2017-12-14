@@ -15,11 +15,8 @@
              <div class="columns">
                 <div class="column is-half is-offset-one-quarter" >
                   <center>
-                    <router-link to="/driving">
-                      <button type="button" name="button" class="button is-large is-success">ยอมรับ</button>
-                    </router-link>
-                    <router-link to="/index">
-                      <button type="button" name="button" class="button is-large is-danger">ไม่ยอมรับ</button>
+                    <router-link to="/sending">
+                      <button type="button" name="button" class="button is-large is-success">เริ่มคิดเงิน</button>
                     </router-link>
                   </center>
                 </div>
@@ -41,7 +38,6 @@ Vue.use(VueGoogleMaps, {
   }
 })
 export default {
-  name: 'calling',
   data () {
     return {
       msg: 'Header',

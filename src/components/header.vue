@@ -17,11 +17,10 @@
           <div v-if="isLogin">
             Loading...
           </div>
-          <div v-if="isReady">
-            <button type="button" class="button is-danger" name="button" @click="login()">Log in</button>
-          </div>
           <div v-if="!isReady">
-            <button type="button" class="button is-danger" name="button" @click="logout()">Log out</button>
+            <router-link to="/">
+              <button type="button" class="button is-danger" name="button" @click="logout()">Log out</button>
+            </router-link>
           </div>
         </div>
       </div>
@@ -40,7 +39,6 @@ export default {
   },
   methods: {
     ...mapActions([
-      'login',
       'logout'
     ])
   }
