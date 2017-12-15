@@ -18,7 +18,7 @@
                   <center>
                     {{caller.firebaseID}}
                     <router-link to="/driving">
-                      <button type="button" name="button" class="button is-large is-success" @click="update()">ยอมรับ</button>
+                      <button type="button" name="button" class="button is-large is-success" @click="update()">{{back}}</button>
                     </router-link>
                     <router-link to="/start">
                       <button type="button" name="button" class="button is-large is-danger">ไม่ยอมรับ</button>
@@ -61,7 +61,15 @@ export default {
       'caller',
       'wait',
       'user'
-    ])
+    ]),
+    back () {
+      if (this.caller.state === 'wait') {
+        return 'ยอมรับ'
+      } else {
+        this.$router.push({path: '/index'})
+        return ''
+      }
+    }
   },
   methods: {
     ...mapActions([
