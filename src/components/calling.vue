@@ -17,9 +17,8 @@
                 <div class="column is-half is-offset-one-quarter" >
                   <center>
                     {{caller.firebaseID}}
-                    {{lat}} : {{long}}
                     <router-link to="/driving">
-                      <button type="button" name="button" class="button is-large is-success" >ยอมรับ</button>
+                      <button type="button" name="button" class="button is-large is-success" @click="update()">ยอมรับ</button>
                     </router-link>
                     <router-link to="/start">
                       <button type="button" name="button" class="button is-large is-danger">ไม่ยอมรับ</button>
@@ -60,17 +59,26 @@ export default {
       'lat',
       'long',
       'caller',
-      'wait'
+      'wait',
+      'user'
     ])
   },
   methods: {
     ...mapActions([
       'bindcallRef',
       'unbindcallRef',
-      'updateState'
+      'updateState',
+      'updateDriver'
     ]),
     update () {
-      this.updateState(this.caller.firebaseID)
+      this.updateState({
+        ID: this.caller.firebaseID,
+        state: 'driving'
+      })
+      this.updateDriver({
+        ID: this.caller.firebaseID,
+        driver: this.user
+      })
     }
   },
   mounted () {

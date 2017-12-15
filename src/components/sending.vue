@@ -72,7 +72,10 @@ export default {
     ]),
     update () {
       this.setTime(this.data)
-      this.updateState(this.caller.firebaseID)
+      this.updateState({
+        ID: this.caller.firebaseID,
+        state: 'no wait'
+      })
     }
   },
   mounted () {

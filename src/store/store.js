@@ -13,6 +13,7 @@ export default {
     lat: 0,
     long: 0,
     caller: {},
+    caller2: {},
     wait: 'wait'
   },
   getters: {
@@ -54,6 +55,11 @@ export default {
             state.caller = arr[i]
             state.wait = 'non'
             break
+          }
+          if (arr[i].state === 'driving') {
+            state.caller = arr[i]
+            state.wait = 'non'
+            break
           } else {
             state.wait = 'wait'
             state.caller = {}
@@ -73,7 +79,10 @@ export default {
       store.commit('setCaller')
     },
     updateState (store, payload) {
-      callRef.child(payload + '/state').set('no wait')
+      callRef.child(payload.ID + '/state').set(payload.state)
+    },
+    updateDriver (store, payload) {
+      callRef.child(payload.ID + '/driver').set(payload.driver)
     },
     newDriver (store, payload) {
       driverRef.push(payload)
