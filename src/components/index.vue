@@ -32,7 +32,7 @@ export default {
     ]),
     next () {
       setInterval(() => { this.setCaller() }, 1000)
-      if (this.wait === 'non') {
+      if (this.caller.state === 'wait') {
         this.$router.push({path: '/calling'})
         return 'เจอแล้ว'
       } else {

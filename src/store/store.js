@@ -50,7 +50,7 @@ export default {
             })
           }
         }
-        for (var i = 0; i < arr.length; i++) {
+        for (var i = arr.length - 1; i >= 0; i--) {
           if (arr[i].state === 'wait') {
             state.caller = arr[i]
             state.wait = 'non'
@@ -83,6 +83,14 @@ export default {
     },
     updateDriver (store, payload) {
       callRef.child(payload.ID + '/driver').set(payload.driver)
+    },
+    updateTimeCost (state, payload) {
+      callRef.child(payload.ID + '/cost').once('value', snapshot => {
+        callRef.child(payload.ID + '/cost').set(payload.cost)
+      })
+      callRef.child(payload.ID + '/time').once('value', snapshot => {
+        callRef.child(payload.ID + '/time').set(payload.time)
+      })
     },
     newDriver (store, payload) {
       driverRef.push(payload)

@@ -60,6 +60,14 @@ export default {
     ]),
     calCost () {
       this.data.cost = this.data.Sec * 2
+      if (this.caller.state === 'driving') {
+        this.updateTimeCost({
+          ID: this.caller.firebaseID,
+          state: this.caller.state,
+          cost: this.data.cost,
+          time: this.data.Sec
+        })
+      }
       return this.data.cost
     }
   },
@@ -68,14 +76,11 @@ export default {
       'bindtimerRef',
       'unbindtimerRef',
       'setTime',
-      'updateState'
+      'updateState',
+      'updateTimeCost'
     ]),
     update () {
       this.setTime(this.data)
-      this.updateState({
-        ID: this.caller.firebaseID,
-        state: 'no wait'
-      })
     }
   },
   mounted () {

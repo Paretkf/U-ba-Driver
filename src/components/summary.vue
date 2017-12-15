@@ -11,16 +11,16 @@
                 <div class="column is-6">
                   <label class="title is-3">ราคารวม  </label>
                   <span class="tag is-danger is-large">
-                    <label class="title is-3" style="color : #ffffff">{{money}} ฿</label>
+                    <label class="title is-3" style="color : #ffffff">{{caller.cost}} ฿</label>
                   </span><br>
                   <label class="title is-4">เวลา  </label>
                   <span class="tag is-warning is-large">
-                    <label class="title is-4" style="color : #ffffff">{{sec}} วินาที</label>
+                    <label class="title is-4" style="color : #ffffff">{{caller.time}} วินาที</label>
                   </span>
                   <br><br>
                   <img src="https://media.giphy.com/media/l2QDVwaaqvZGr834c/giphy.gif" alt="" width="100%"> <br>
                   <router-link to="/start">
-                    <button type="button" name="button" style="width : 100%" class="button is-large is-success">จ่ายเงิน</button>
+                    <button type="button" name="button" style="width : 100%" class="button is-large is-success" @click="update()">จ่ายเงิน</button>
                   </router-link>
                 </div>
               </div>
@@ -33,7 +33,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'summary',
   data () {
@@ -44,8 +44,24 @@ export default {
   computed: {
     ...mapGetters([
       'sec',
-      'money'
+      'money',
+      'caller'
     ])
+  },
+  methods: {
+    ...mapActions([
+      'bindtimerRef',
+      'unbindtimerRef',
+      'setTime',
+      'updateState',
+      'updateTimeCost'
+    ]),
+    update () {
+      this.updateState({
+        ID: this.caller.firebaseID,
+        state: 'no wait'
+      })
+    }
   }
 }
 </script>
