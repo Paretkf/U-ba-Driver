@@ -3,15 +3,17 @@
   <section class="hero is-info is-fullheight">
   <div class="hero-body" style="background-color : #666666">
     <div class="container">
-      <h1 class="title">
-        <center><img src="https://media.giphy.com/media/l2QDVwaaqvZGr834c/giphy.gif" alt="" width="25%"></center>
-        <center>
+        <div class="columns is-centered">
+          <div class="column is-6 box">
+             <center>
+             <img src="https://media.giphy.com/media/l2QDVwaaqvZGr834c/giphy.gif" alt="" width="75%"></center>
+          <center>
           <router-link to="/start">
-            <!-- <button class="button is-danger">{{next}}</button> -->
-            <button class="button is-danger">{{next}}</button>
+            <button class="button is-danger is-large" style="width : 100%">{{next}}</button>
           </router-link>
         </center>
-      </h1>
+          </div>
+        </div>
     </div>
   </div>
 </section>
