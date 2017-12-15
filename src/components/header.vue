@@ -1,6 +1,6 @@
 <template>
   <div class='cccc'>
-    <div class="navbar is-transparent is-info"  style="height: 100px">
+    <div class="navbar is-transparent is-info"  style="height: 120px">
       <div class="navbar-brand">
         <div class="navbar-item">
           <label class="title is-2" style="color : #FFFFFF">U-ba Driver</label>
@@ -9,16 +9,15 @@
 
       <div class="navbar-end">
         <div class="navbar-item">
-          
+
           <div v-if="!isReady">
-            <img :src="user.fb.photoURL" alt="">
-            {{user.displayName}}
-          </div>
-          <div v-if="!isReady">
+            <img :src="user.fb.photoURL" alt=""> &nbsp
+            {{user.displayName}} &nbsp&nbsp
             <router-link to="/">
               <button type="button" class="button is-danger" name="button" @click="discon()">Log out</button>
             </router-link>
           </div>
+
         </div>
       </div>
     </div>
