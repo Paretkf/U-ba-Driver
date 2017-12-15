@@ -19,7 +19,7 @@
                   </span>
                   <br><br>
                   <img src="https://media.giphy.com/media/l2QDVwaaqvZGr834c/giphy.gif" alt="" width="100%"> <br>
-                  <router-link to="/index">
+                  <router-link to="/start">
                     <button type="button" name="button" style="width : 100%" class="button is-large is-success">จ่ายเงิน</button>
                   </router-link>
                 </div>

@@ -12,8 +12,8 @@ export default {
     driver: {},
     lat: 0,
     long: 0,
-    caller: {
-    }
+    caller: {},
+    wait: 'wait'
   },
   getters: {
     sec: state => state.sec,
@@ -21,7 +21,8 @@ export default {
     driver: state => state.driver,
     lat: state => state.lat,
     long: state => state.long,
-    caller: state => state.caller
+    caller: state => state.caller,
+    wait: state => state.wait
   },
   mutations: {
     ...firebaseMutations,
@@ -31,7 +32,7 @@ export default {
     },
     updateCoods (state, payload) {
       state.long = payload.long
-      console.log(state.long)
+      state.lat = payload.lat
     },
     setCaller (state) {
       // callRef.once('child_added', snapshot => {
@@ -48,8 +49,16 @@ export default {
             })
           }
         }
-        state.caller = arr[0]
-        console.log('start ', state.caller)
+        for (var i = 0; i < arr.length; i++) {
+          if (arr[i].state === 'wait') {
+            state.caller = arr[i]
+            state.wait = 'non'
+            break
+          } else {
+            state.wait = 'wait'
+            state.caller = {}
+          }
+        }
       })
     }
   },
@@ -60,8 +69,11 @@ export default {
     async setCoods (store, payload) {
       store.commit('updateCoods', payload)
     },
-    setCaller (store, msg) {
+    setCaller (store, payload) {
       store.commit('setCaller')
+    },
+    updateState (store, payload) {
+      callRef.child(payload + '/state').set('no wait')
     },
     newDriver (store, payload) {
       driverRef.push(payload)

@@ -7,18 +7,21 @@
           <div class="columns is-centered">
             <div class="column is-6 box">
               <div class="columns">
-                <gmap-map :center="center" :zoom="7" style="width: 500px; height: 300px">
+                <gmap-map :center="center" :zoom="10" style="width: 500px; height: 300px">
                   <gmap-marker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true" @click="center=m.position">
+                    {{m.me}}
                   </gmap-marker>
                 </gmap-map>
               </div>
              <div class="columns">
                 <div class="column is-half is-offset-one-quarter" >
                   <center>
+                    {{caller.firebaseID}}
+                    {{lat}} : {{long}}
                     <router-link to="/driving">
-                      <button type="button" name="button" class="button is-large is-success">ยอมรับ</button>
+                      <button type="button" name="button" class="button is-large is-success" >ยอมรับ</button>
                     </router-link>
-                    <router-link to="/index">
+                    <router-link to="/start">
                       <button type="button" name="button" class="button is-large is-danger">ไม่ยอมรับ</button>
                     </router-link>
                   </center>
@@ -33,6 +36,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import Vue from 'vue'
 import * as VueGoogleMaps from 'vue2-google-maps'
 Vue.use(VueGoogleMaps, {
@@ -45,13 +49,41 @@ export default {
   data () {
     return {
       msg: 'Header',
-      center: {lat: 13.754, lng: 100.5014},
+      center: {},
       markers: [{
-        position: {lat: 13.754, lng: 100.5014}
+        position: {}
       }]
     }
   },
   computed: {
+    ...mapGetters([
+      'lat',
+      'long',
+      'caller',
+      'wait'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'bindcallRef',
+      'unbindcallRef',
+      'updateState'
+    ]),
+    update () {
+      this.updateState(this.caller.firebaseID)
+    }
+  },
+  mounted () {
+    this.center = {
+      lat: this.caller.Latitude,
+      lng: this.caller.Longitude
+    }
+    this.markers = [{
+      position: {
+        lat: this.caller.Latitude,
+        lng: this.caller.Longitude
+      }
+    }]
   }
 }
 </script>

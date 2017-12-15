@@ -7,11 +7,8 @@
           <div class="columns is-centered">
             <div class="column is-6 box">
               <div class="columns">
-                <img src="http://www.travelanium.com/parindahotel/images/thumb-map-gg.jpg" alt="">
-              </div>
-              <div class="columns">
                 <div class="column is-4">
-                  <img src="https://media.giphy.com/media/l0ErJPn84pg92DDgY/giphy.gif" alt="" width="150px">
+                  <img :src="caller.photoURL" alt="" width="150px">
                 </div>
                 <div class="column is-4">
                   <label class="title is-3">ราคา </label><br>
@@ -23,13 +20,13 @@
                   <label class="title is-4">
                     {{data.Sec}} วินาที
                   </label><br>
-                  <label class="title is-4">แทยอน</label>
+                  <label class="title is-4">{{caller.name}}</label>
                 </div>
               </div>
               <div class="columns">
                 <div class="column is-half is-offset-one-quarter" >
                   <center>
-                    <router-link to="/summary"><button type="button" name="button" class="button is-large is-success" @click="setTime(data)">Arrive</button></router-link>
+                    <router-link to="/summary"><button type="button" name="button" class="button is-large is-success" @click="update()">Arrive</button></router-link>
                   </center>
                 </div>
               </div>
@@ -42,7 +39,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'sending',
   data () {
@@ -55,6 +52,12 @@ export default {
     }
   },
   computed: {
+    ...mapGetters([
+      'lat',
+      'long',
+      'caller',
+      'wait'
+    ]),
     calCost () {
       this.data.cost = this.data.Sec * 2
       return this.data.cost
@@ -64,8 +67,13 @@ export default {
     ...mapActions([
       'bindtimerRef',
       'unbindtimerRef',
-      'setTime'
-    ])
+      'setTime',
+      'updateState'
+    ]),
+    update () {
+      this.setTime(this.data)
+      this.updateState(this.caller.firebaseID)
+    }
   },
   mounted () {
     setInterval(() => { this.data.Sec++ }, 1000)

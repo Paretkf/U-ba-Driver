@@ -3,10 +3,8 @@
   <section class="hero is-info is-fullheight">
   <div class="hero-body" style="background-color : #666666">
     <div class="container">
-      {{caller.name}}
       <h1 class="title">
-        <button @click="setCaller()">caller</button>
-        
+        {{next}}
         <center><img src="https://media.giphy.com/media/l2QDVwaaqvZGr834c/giphy.gif" alt="" width="25%"></center>
         <center>Hello UBA Driver</center>
       </h1>
@@ -29,8 +27,18 @@ export default {
     ...mapGetters([
       'lat',
       'long',
-      'caller'
-    ])
+      'caller',
+      'wait'
+    ]),
+    next () {
+      setInterval(() => { this.setCaller() }, 1000)
+      if (this.wait === 'non') {
+        this.$router.push({path: '/calling'})
+        return 'เจอแล้ว'
+      } else {
+        return 'Hello UBA Driver'
+      }
+    }
   },
   methods: {
     ...mapActions([
