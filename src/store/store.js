@@ -50,7 +50,7 @@ export default {
             })
           }
         }
-        for (var i = arr.length - 1; i >= 0; i--) {
+        for (var i = 0; i < arr.length; i++) {
           if (arr[i].state === 'wait') {
             state.caller = arr[i]
             state.wait = 'non'
