@@ -2,11 +2,12 @@
   <div class="calling">
     <section class="hero is-fullheight"  style="background-color : #666666">
       <div class="hero">
-      <br>
+      <br><br>
        <div class="container">
           <div class="columns is-centered">
             <div class="column is-6 box">
-              <div class="columns">
+              <br>
+              <div class="columns is-centered">
                 <gmap-map :center="center" :zoom="8" style="width: 500px; height: 300px">
                   <gmap-marker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="false" @click="center=m.position">
                   </gmap-marker>
@@ -65,12 +66,6 @@ export default {
       position: {
         lat: this.caller.Latitude,
         lng: this.caller.Longitude
-      }
-    },
-    {
-      position: {
-        lat: this.lat,
-        lng: this.long
       }
     }]
   }

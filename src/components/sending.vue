@@ -2,7 +2,7 @@
   <div class="sending">
     <section class="hero is-fullheight" style="background-color : #666666">
       <div class="hero" >
-        <br>
+        <br><br>
         <div class="container">
           <div class="columns is-centered">
             <div class="column is-6 box">
@@ -10,17 +10,15 @@
                 <div class="column is-4">
                   <img :src="caller.photoURL" alt="" width="150px">
                 </div>
-                <div class="column is-4">
-                  <label class="title is-3">ราคา </label><br>
-                  <label class="title is-4">ระยะเวลา </label><br>
-                  <label class="title is-4">ชื่อลูกค้า </label>
+                <div class="column is-3">
+                  <span class="tag is-info is-medium"><b>ราคา </b></span><br><br>
+                  <span class="tag is-success is-medium">ระยะเวลา </span><br><br>
+                  <span class="tag is-primary is-medium">ชื่อลูกค้า </span>
                 </div>
                 <div class="column is-4">
-                  <span class="tag is-danger is-large">{{calCost}} ฿</span><br>
-                  <label class="title is-4">
-                    {{data.Sec}} วินาที
-                  </label><br>
-                  <label class="title is-4">{{caller.name}}</label>
+                  <label class="title is-4">{{calCost}} ฿</label><br><br>
+                  <label class="title is-4">{{data.Sec}} วินาที</label><br><br>
+                  <label class="subtitle is-4">{{caller.name}}</label>
                 </div>
               </div>
               <div class="columns">

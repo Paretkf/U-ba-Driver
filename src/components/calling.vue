@@ -2,21 +2,29 @@
   <div class="calling">
     <section class="hero is-fullheight"  style="background-color : #666666">
       <div class="hero">
-      <br>
+      <br><br><br>
        <div class="container">
           <div class="columns is-centered">
             <div class="column is-6 box">
-              <div class="columns">
+              <br>
+              <div class="columns is-centered">
                 <gmap-map :center="center" :zoom="10" style="width: 500px; height: 300px">
                   <gmap-marker :key="index" v-for="(m, index) in markers" :position="m.position" :clickable="true" :draggable="true" @click="center=m.position">
-                    {{m.me}}
                   </gmap-marker>
                 </gmap-map>
               </div>
              <div class="columns">
-                <div class="column is-half is-offset-one-quarter" >
+                <div class="column  " >
                   <center>
-                    {{caller.firebaseID}}
+                    <div class="columns is-centered">
+                      <div class="column is-3">
+                        <img :src="caller.photoURL" alt="" style="border-radius : 50%;width : 66px;height : 66px" >
+                      </div>
+                      <div class="column is-5">
+                        <br>
+                        <label class="title is-4">{{caller.name}}</label>
+                      </div>
+                    </div>
                     <router-link to="/driving">
                       <button type="button" name="button" class="button is-large is-success" @click="update()">{{back}}</button>
                     </router-link>
@@ -63,6 +71,7 @@ export default {
       'user'
     ]),
     back () {
+      this.setCaller()
       if (this.caller.state === 'wait') {
         return 'ยอมรับ'
       } else {
@@ -76,7 +85,8 @@ export default {
       'bindcallRef',
       'unbindcallRef',
       'updateState',
-      'updateDriver'
+      'updateDriver',
+      'setCaller'
     ]),
     update () {
       this.updateState({

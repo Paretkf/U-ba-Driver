@@ -7,7 +7,8 @@
          <br><br><br>
           <div class="columns is-centered">
             <div class="column is-4 box">
-              <button class="button is-large is-success" style="width : 100%; height :100%" @click="newDri">login </button>
+              <img src="https://media.giphy.com/media/3o6wreSoWc0Zjhunf2/giphy.gif" alt="">
+              <button class="button is-large is-success" style="width : 100%;" @click="newDri">login </button>
             </div>
          </div>
        </div>

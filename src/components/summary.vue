@@ -2,7 +2,7 @@
   <div class="hello">
     <section class="hero is-fullheight" style="background-color : #666666">
       <div class="hero" >
-        <br>
+        <br><br>
         <div class="container">
           <div class="columns is-centered">
             <div class="column is-6 box">
@@ -11,12 +11,8 @@
                 <div class="column is-6">
                   <label class="title is-3">ราคารวม  </label>
                   <span class="tag is-danger is-large">
-                    <label class="title is-3" style="color : #ffffff">{{caller.cost}} ฿</label>
+                    <label class="title is-3" style="color : #ffffff">{{back}} ฿</label>
                   </span><br>
-                  <label class="title is-4">เวลา  </label>
-                  <span class="tag is-warning is-large">
-                    <label class="title is-4" style="color : #ffffff">{{caller.time}} วินาที</label>
-                  </span>
                   <br><br>
                   <img src="https://media.giphy.com/media/l2QDVwaaqvZGr834c/giphy.gif" alt="" width="100%"> <br>
                   <router-link to="/start">
@@ -46,7 +42,11 @@ export default {
       'sec',
       'money',
       'caller'
-    ])
+    ]),
+    back () {
+      this.setCaller()
+      return this.caller.cost
+    }
   },
   methods: {
     ...mapActions([
@@ -54,7 +54,8 @@ export default {
       'unbindtimerRef',
       'setTime',
       'updateState',
-      'updateTimeCost'
+      'updateTimeCost',
+      'setCaller'
     ]),
     update () {
       this.updateState({

@@ -1,8 +1,7 @@
 <template>
   <div class='cccc'>
     <div class="navbar is-transparent is-info"  style="height: 100px">
-      <div class="navbar-brand ">
-        <img src="build\logo.png" width="10%">
+      <div class="navbar-brand">
         <div class="navbar-item">
           <label class="title is-2" style="color : #FFFFFF">U-ba Driver</label>
         </div>

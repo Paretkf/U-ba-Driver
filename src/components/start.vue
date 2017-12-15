@@ -2,20 +2,24 @@
   <div>
     <section class="hero is-fullheight"  style="background-color : #666666">
       <div class="hero">
-      
        <div class="container">
          <br><br><br>
           <div class="columns is-centered">
             <div class="column is-6 box">
-              <img :src="user.fb.photoURL" alt="">
-              {{user.displayName}}
-              <div v-if="user != null">
-                พิกัด ละติจูด{{lati}} : ลองติจูด{{longi}}
-              <router-link to="index">
-                
+              <div class="columns">
+                <div class="column is-3">
+                  <img :src="user.fb.photoURL" alt="">
+                </div>
+                 <div class="column is-9 subtitle is-4">
+                  {{user.displayName}}
+                  <div v-if="user != null">
+                    ละติจูด{{lati}} <br> ลองติจูด{{longi}}
+                  </div>
+                </div>
+              </div>
+               <router-link to="index">
               <button class="button is-large is-success" style="width : 100%;" @click="addNew()">เริ่มรับลูกค้า</button>
               </router-link>
-              </div>
             </div>
          </div>
        </div>

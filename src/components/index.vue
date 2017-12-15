@@ -4,9 +4,13 @@
   <div class="hero-body" style="background-color : #666666">
     <div class="container">
       <h1 class="title">
-        {{next}}
         <center><img src="https://media.giphy.com/media/l2QDVwaaqvZGr834c/giphy.gif" alt="" width="25%"></center>
-        <center>Hello UBA Driver</center>
+        <center>
+          <router-link to="/start">
+            <!-- <button class="button is-danger">{{next}}</button> -->
+            <button class="button is-danger">{{next}}</button>
+          </router-link>
+        </center>
       </h1>
     </div>
   </div>
@@ -31,12 +35,13 @@ export default {
       'wait'
     ]),
     next () {
-      setInterval(() => { this.setCaller() }, 1000)
+      // var a = setInterval(() => { this.setCaller() }, 3000)
+      this.setCaller()
       if (this.caller.state === 'wait') {
         this.$router.push({path: '/calling'})
         return 'เจอแล้ว'
       } else {
-        return 'Hello UBA Driver'
+        return 'Back'
       }
     }
   },
