@@ -2,14 +2,14 @@
   <div class='cccc'>
     <div class="navbar is-transparent is-info"  style="height: 120px">
       <div class="navbar-brand">
+          <img src="../assets/Uba-LogoBlue.png" alt="" style="width : 10%">        
         <div class="navbar-item">
           <label class="title is-2" style="color : #FFFFFF">U-ba Driver</label>
         </div>
       </div>
 
       <div class="navbar-end">
-        <div class="navbar-item">
-
+        <div class="navbar-item">       
           <div v-if="!isReady">
             <img :src="user.fb.photoURL" alt=""> &nbsp
             {{user.displayName}} &nbsp&nbsp
