@@ -18,6 +18,8 @@
               <button type="button" class="button is-danger" name="button" @click="discon()">Log out</button>
             </router-link>
           </div>
+          <div>
+          </div>
 
         </div>
       </div>
