@@ -7,6 +7,7 @@
           <label class="title is-2" style="color : #FFFFFF">U-ba Driver</label>
         </div>
       </div>
+      <div></div>
 
       <div class="navbar-end">
         <div class="navbar-item">       
